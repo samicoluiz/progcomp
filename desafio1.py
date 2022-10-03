@@ -17,7 +17,11 @@ else:
             matriz[0].append([i, j])
     #Pedindo o t de cada cidade:
     for i in matriz[0]:
-        matriz[1].append(int(input(f'Insira o tempo entre as cidades {i[0]} e {i[1]}')))
+        t = int(input(f'Insira o tempo entre as cidades {i[0]} e {i[1]}'))
+        while t < 1 or t > 1000:
+            print('Valor inválido, insira um tempo entre 1 e 1000')
+            t = int(input(f'Insira o tempo entre as cidades {i[0]} e {i[1]}'))
+        matriz[1].append(t)
     #Gerador de possibilidades de visitas considerarando a condição k:
     casos = [[x for x in range(1, n+1)]]
     tempos = []
