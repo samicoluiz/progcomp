@@ -1,15 +1,14 @@
 #Recebendo o valor de n:
 n = int(input('Informe o número de cidades: '))
 
-if n <= 2 or n >= 1500:
-    while n <= 2 or n >= 1500:
-        print('Valor inválido.\nO valor precisa estar entre 2 e 1500.')
-        continua = int(input("Deseja inserir outro número?"))
-        if continua == 1:
-            n = int(input('Informe o número de cidades: '))
-        else:
-            print('Encerrando')
-            break
+while n <= 2 or n >= 1500:
+    print('Valor inválido.\nO valor precisa estar entre 2 e 1500.')
+    continua = int(input("Deseja inserir outro número?"))
+    if continua == 1:
+        n = int(input('Informe o número de cidades: '))
+    else:
+        print('Encerrando')
+        break
 else:
     #Calculando as Combinações 2 a 2:
     matriz = [[], []]
