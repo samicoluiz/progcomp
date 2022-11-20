@@ -29,5 +29,4 @@ def validar(entrada: list[list[int]]) -> bool:
         print(f"O número de eventos é diferente do especificado ({len(entrada[2:])} != {entrada[0][1]})")
         return False
     else:
-        print("Entrada válida")
         return True
