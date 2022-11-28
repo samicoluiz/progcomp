@@ -2,8 +2,7 @@ from input_validation import validar, somente_numeros, vetorizar_entrada
 from edificio import Edificio
 from tabeliao import logar, clr_log
 
-
-with open("desafio2/entrada.txt", "r") as f:
+with open("entrada.txt", "r") as f:
     entrada = f.read()
 
 # Validando a entrada
