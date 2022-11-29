@@ -1,6 +1,6 @@
-from input_validation import validar, somente_numeros, vetorizar_entrada
 from edificio import Edificio
-from tabeliao import logar, clr_log
+from input_validation import validar, vetorizar_entrada
+from tabeliao import logar
 
 with open("entrada.txt", "r") as f:
     entrada = f.read()
@@ -8,6 +8,7 @@ with open("entrada.txt", "r") as f:
 # Validando a entrada
 if validar(entrada):
     logar(entrada)
+    # Transformar a entrada de uma única string para um vetor de números
     entrada = vetorizar_entrada(entrada)
     # Criando o arranha-céu
     andares, populacao = entrada[0][0], entrada[1]

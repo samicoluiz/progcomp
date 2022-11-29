@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from matplotlib import pyplot as plt
 
 
@@ -7,12 +7,7 @@ class Edificio:
     andares: int
     pessoas_por_andar: list[int]
 
-    # pessoas_por_andar: list[int] = field(default_factory = lambda: [0])
-
-    # def __post_init__(self):
-    #     self.pessoas_por_andar = [0] * self.andares
-
-    def mudanca(self, andar: int, nova_população: int) -> None:
+    def mudanca(self, andar: int, nova_população: int, desenhar: bool) -> None:
         """Altera o número de moradores em um andar.
         Recebe o andar e o novo valor de população alterando o atributo pessoas_por_andar correspondente.
         """
@@ -23,7 +18,7 @@ class Edificio:
             bottom = 0
             labels = [str(i) for i in self.pessoas_por_andar]
             for piso in andares:
-                cor = ("#8fbcbb" if piso != andar-1 else "#ebcb8b")
+                cor = ("#8fbcbb" if piso != andar - 1 else "#ebcb8b")
                 x = 1
                 y = 1
                 p = ax.bar(x, y, bottom=bottom, width=.35, label=labels[piso], color=cor, edgecolor="#81a1c1")
@@ -42,11 +37,11 @@ class Edificio:
             # plt.savefig('figs/my_plot.png')
             plt.show()
 
-
         self.pessoas_por_andar[andar - 1] = nova_população
-        desenhar_mudanca()
+        if desenhar is True:
+            desenhar_mudanca()
 
-    def censo(self, andar_limite: int) -> int:
+    def censo(self, andar_limite: int, desenhar: bool) -> int:
         """Conta todos os moradores residentes no edificio do andar 1 até o andar_limite."""
 
         def desenhar_censo():
@@ -77,14 +72,16 @@ class Edificio:
             plt.show()
 
         contagem = sum(self.pessoas_por_andar[:andar_limite])
-        desenhar_censo()
+        if desenhar is True:
+            desenhar_censo()
         return contagem
 
     def sindico(self, evento: list[int]) -> int:
         """Aplica o método adequado a entrada segundo a seguinte regra:
         1- Caso a entrada seja uma lista de tamanho 3, aplicar o metodo mudanca
         2- Caso a entrada seja uma lista de tamanho 2, aplicar o metodo censo"""
+
         if evento[0] == 0:
-            self.mudanca(evento[1], evento[2])
+            self.mudanca(evento[1], evento[2], desenhar=True)
         elif evento[0] == 1:
-            print(self.censo(evento[1]))
+            print(self.censo(evento[1], desenhar=True))
