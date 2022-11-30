@@ -7,7 +7,7 @@ class Edificio:
     andares: int
     pessoas_por_andar: list[int]
 
-    def mudanca(self, andar: int, nova_população: int, desenhar: bool) -> None:
+    def mudanca(self, andar: int, nova_populacao: int, desenhar: bool = False) -> None:
         """Altera o número de moradores em um andar.
         Recebe o andar e o novo valor de população alterando o atributo pessoas_por_andar correspondente.
         """
@@ -37,16 +37,15 @@ class Edificio:
             # plt.savefig('figs/my_plot.png')
             plt.show()
 
-        self.pessoas_por_andar[andar - 1] = nova_população
+        self.pessoas_por_andar[andar - 1] = nova_populacao
         if desenhar is True:
             desenhar_mudanca()
 
-    def censo(self, andar_limite: int, desenhar: bool) -> int:
+    def censo(self, andar_limite: int, desenhar: bool = False) -> int:
         """Conta todos os moradores residentes no edificio do andar 1 até o andar_limite."""
 
         def desenhar_censo():
             fig, ax = plt.subplots()
-            andares = range(len(self.pessoas_por_andar) - (andar_limite - 1))
             pops = [contagem] + self.pessoas_por_andar[andar_limite:]
             pops_indice = range(len(pops))
             bottom = 0
@@ -76,10 +75,10 @@ class Edificio:
             desenhar_censo()
         return contagem
 
-    def sindico(self, evento: list[int]) -> int:
+    def sindico(self, evento: list[int]) -> None:
         """Aplica o método adequado a entrada segundo a seguinte regra:
-        1- Caso a entrada seja uma lista de tamanho 3, aplicar o metodo mudanca
-        2- Caso a entrada seja uma lista de tamanho 2, aplicar o metodo censo"""
+        1- Caso a entrada seja uma lista de tamanho 3, aplicar o método mudanca
+        2- Caso a entrada seja uma lista de tamanho 2, aplicar o método censo"""
 
         if evento[0] == 0:
             self.mudanca(evento[1], evento[2], desenhar=True)

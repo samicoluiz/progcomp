@@ -8,7 +8,7 @@ with open("entrada.txt", "r") as f:
 # Validando a entrada
 if validar(entrada):
     logar(entrada)
-    # Transformar a entrada de uma única string para um vetor de números
+    # Transformar a entrada de uma única str para uma list[int]
     entrada = vetorizar_entrada(entrada)
     # Criando o arranha-céu
     andares, populacao = entrada[0][0], entrada[1]

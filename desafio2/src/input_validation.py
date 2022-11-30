@@ -7,7 +7,7 @@ def somente_numeros(entrada: str) -> bool:
         return False
 
 
-def vetorizar_entrada(entrada: str) -> list[list[str]]:
+def vetorizar_entrada(entrada: str) -> list[list[int]]:
     """Transforma cada linha de uma entrada válida em uma lista de números"""
 
     entrada = entrada.split("\n")
@@ -17,10 +17,11 @@ def vetorizar_entrada(entrada: str) -> list[list[str]]:
 
 
 def checa_parametros(entrada: list[list[int]]) -> bool:
-    """Verifica os requisitos padrão para os parametros (as duas primeiras linhas) fornecidos nas especificações. São eles:
-    1- O primeiro número (N) da primeira linha está no intervalo 1 <= N <= 10e5
-    2- O segundo número (Q) da primeira linha está no intervalo 1 <= Q <= N
-    3- O número de pessoas (Ai) em um determinado andar tem de estar no intervalo 0 <= Ai <= 1000
+    """Verifica os requisitos padrão para os parâmetros (as duas primeiras linhas) fornecidos nas especificações.
+    São eles:
+    1- O primeiro número (N) da primeira linha está no intervalo 1 ≤ N ≤ 10e5
+    2- O segundo número (Q) da primeira linha está no intervalo 1 ≤ Q ≤ N
+    3- O número de pessoas (Ai) em um determinado andar tem de estar no intervalo 0 ≤ Ai ≤ 1000
     """
 
     if not 1 <= entrada[0][0] <= 10e5:
@@ -38,8 +39,8 @@ def checa_parametros(entrada: list[list[int]]) -> bool:
 
 def checa_eventos(entrada: list[list[int]]) -> bool:
     """Verifica os requisitos padrão para os eventos (linhas após a segunda) fornecidos nas especificações. São eles:
-    1- Há pelo menos um evento que comece com o numero 1
-    2- Um determinado andar (K) tem de estar no intervalo 1 <= K <= N
+    1- Há pelo menos um evento que comece com o número 1
+    2- Um determinado andar (K) tem de estar no intervalo 1 ≤ K ≤ N
     3- O número de pessoas (P) que podem se mudar para um determinado andar tem de estar no intervalo 0 <= P <= 1000
     """
 
@@ -63,11 +64,11 @@ def checa_eventos(entrada: list[list[int]]) -> bool:
 
 
 def checa_forma(entrada: list[list[int]]) -> bool:
-    """Recebe a entrada do usuário e verifica se é válida de acordo com os seguintes requisitos:
+    """Recebe a entrada do usuário e verifica se é válida conforme os seguintes requisitos:
     1- A entrada tem pelo menos 3 linhas;
     2- O tamanho da segunda linha é igual ao primeiro elemento da primeira linha;
-    3- O numero de linhas restantes após a segunda é igual ao segundo elemento da primeira linha;
-    4- Todos os lementos da entrada são números.
+    3- O número de linhas restantes após a segunda é igual ao segundo elemento da primeira linha;
+    4- Todos os elementos da entrada são números.
     """
 
     if len(entrada) < 3:
@@ -81,10 +82,10 @@ def checa_forma(entrada: list[list[int]]) -> bool:
         print(f"O número de eventos é diferente do especificado ({len(entrada[2:])} != {entrada[0][1]})")
         return False
     else:
-        return True, entrada
+        return True
 
 
-def validar(entrada: list[list[int]]) -> bool:
+def validar(entrada: str) -> bool:
     """Executa as validações uma a uma. Interrompe o código caso encontre algum problema"""
 
     if somente_numeros(entrada):

@@ -3,6 +3,7 @@ def logar(entrada: str) -> None:
     with open("log.txt", "a") as log:
         log.write(f"{entrada}\n{'-' * 30}\n")
 
+
 def clr_log() -> None:
     """Limpa o log"""
     with open("log.txt", "w") as log:
